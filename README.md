@@ -68,3 +68,61 @@ result = RunIFS(transformations, translations, probability, iterations, 600, 600
 ### Output
 
 ![output](docs/sierpinski.png)
+
+## Random IFS
+### Code
+
+```R
+transformations = list()
+translations    = list()
+probability     = c()
+
+n_rules = ceiling(runif(1, 2, 5))
+
+for(i in 1:n_rules) {
+  transformations[[i]] = matrix(data = c(runif(1, -1, 1), runif(1, -1, 1), runif(1, -1, 1), runif(1, -1, 1)), nrow = 2, ncol = 2)
+  translations[[i]]    = c(runif(1, -10, 10), runif(1, -1, 1))
+  if(i < n_rules && sum(probability) < 100)
+    probability = c(probability, ceiling(runif(1, 1, 100 - sum(probability))))
+  else
+    probability = c(probability, 100 - sum(probability))
+}
+
+iterations = 10**7
+
+result = IFSPlot::RunIFS(transformations, translations, probability, iterations, 600, 600)
+
+#> transformations
+#[[1]]
+#           [,1]       [,2]
+#[1,] -0.4306939 -0.3824292
+#[2,] -0.8861779  0.2206868
+#
+#[[2]]
+#           [,1]       [,2]
+#[1,] -0.4247236 0.02783971
+#[2,] -0.8051508 0.73832768
+#
+#[[3]]
+#           [,1]       [,2]
+#[1,] -0.0180402 -0.3716764
+#[2,] -0.8905424  0.8767196
+#
+#> translations
+#[[1]]
+#[1] 5.428667 0.207256
+#
+#[[2]]
+#[1] -7.0755932  0.9554882
+#
+#[[3]]
+#[1] -4.3006790  0.1036099
+#
+#> probability
+#[1] 83 11  6
+
+```
+
+### Output
+
+![output](docs/random.png)
