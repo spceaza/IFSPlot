@@ -126,3 +126,32 @@ result = IFSPlot::RunIFS(transformations, translations, probability, iterations,
 ### Output
 
 ![output](docs/random.png)
+
+### Code
+
+```R
+#[[1]]
+#           [,1]        [,2]
+#[1,] -0.7678027 -0.04480167
+#[2,]  0.4884063 -0.79417768
+#
+#[[2]]
+#           [,1]       [,2]
+#[1,] -0.3808980 0.07212426
+#[2,] -0.4468545 0.95750017
+#
+#> translations
+#[[1]]
+#[1]  6.8574590 -0.2493633
+#
+#[[2]]
+#[1] 0.7330911 0.2557175
+#
+#> probability
+# [1] 98  2
+ 
+ ```
+ 
+### Output
+
+![output](docs/random2.png)
