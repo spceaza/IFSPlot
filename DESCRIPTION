@@ -1,0 +1,12 @@
+Package: IFSPlot
+Type: Package
+Title: Draw fractals using the chaos game method and C++.
+Version: 1.0
+Date: 2018-01-21
+Author: Cristian Sandoval-Pineda
+Maintainer: Cristian Sandoval-Pineda <sandovalp.ce@gmail.com>
+Description: Draw fractals using the chaos game method and C++.
+License: GPL (>= 2)
+Imports: Rcpp (>= 0.12.15)
+LinkingTo: Rcpp
+RoxygenNote: 6.0.1.9000
