@@ -41,7 +41,8 @@ result = ChaosGamePlot::RunChaosGame(transformations, translations, probability,
 
 ![output](docs/fern.png)
 
-## Code
+## Sierpinski triangle
+### Code
 
 ```R
 library(IFSPlot)
@@ -64,6 +65,6 @@ iterations = 10**7
 result = ChaosGamePlot::RunChaosGame(transformations, translations, probability, iterations, 600, 600)
 
 ```
-## Output
+### Output
 
 ![output](docs/sierpinski.png)
