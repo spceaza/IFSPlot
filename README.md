@@ -35,7 +35,7 @@ translations    = list(v1, v2, v3, v4)
 
 iterations = 10**7
 
-result = ChaosGamePlot::RunChaosGame(transformations, translations, probability, iterations, 600, 1200)
+result = RunIFS(transformations, translations, probability, iterations, 600, 1200)
 ```
 ### Output
 
@@ -62,7 +62,7 @@ translations    = list(v1, v2, v3)
 
 iterations = 10**7
 
-result = ChaosGamePlot::RunChaosGame(transformations, translations, probability, iterations, 600, 600)
+result = RunIFS(transformations, translations, probability, iterations, 600, 600)
 
 ```
 ### Output
