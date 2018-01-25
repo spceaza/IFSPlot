@@ -1,4 +1,4 @@
-#' RunChaosGame
+#' RunIFS
 #'
 #' This function allows you to plot some fractals using the Iterated Function Systems theory.
 #' @param transformation A list of size n, the 2 x 2 transformation matrices.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Plot.R
 \name{RunIFS}
 \alias{RunIFS}
-\title{RunChaosGame}
+\title{RunIFS}
 \usage{
 RunIFS(transformation, translation, probability, iterations, width, height,
   set_palette = 0)
