@@ -1,3 +1,4 @@
 useDynLib(IFSPlot, .registration=TRUE)
 export(RunIFS)
 importFrom(Rcpp, evalCpp)
+importFrom(gplots, rich.colors)

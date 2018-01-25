@@ -27,11 +27,11 @@ void test(Ts... args)
 }
 
 // [[Rcpp::export]]
-NumericMatrix IFS(const List& transformation, const List& translation, const std::vector<int>& probability, const int& iterations, int x_res, int y_res)
+NumericMatrix IFS(const List& transformation, const List& translation, const std::vector<int>& probability, const int& iterations, int width, int height)
 {
   std::vector<sp::Matrix<double>>  _transformation;
   std::vector<sp::Matrix<double>>  _translation;
-  NumericMatrix                    result(x_res, y_res);
+  NumericMatrix                    result(width, height);
   std::vector<int>                 rules_probability;
   sp::Matrix<double>               point(std::vector<double>({0, 0}));
   std::vector<double>              x(iterations);
@@ -65,12 +65,13 @@ NumericMatrix IFS(const List& transformation, const List& translation, const std
     if(y[i] < min_y) min_y = y[i];
   }
   
-  for(int i = 0; i < iterations; i++)
+  for(int i = 0; i < iterations; ++i)
   {
-    x[i] = (x[i] - min_x) * (x_res - 1) / (max_x - min_x);
-    y[i] = (y[i] - min_y) * (y_res - 1) / (max_y - min_y);
+    x[i] = (x[i] - min_x) * (width - 1) / (max_x - min_x);
+    y[i] = (y[i] - min_y) * (height - 1) / (max_y - min_y);
 
-    result(x[i], y[i]) = 1;
+    if(result(x[i], y[i]) < 100)
+      result(x[i], y[i]) += 1;
   }
 
   return result;
