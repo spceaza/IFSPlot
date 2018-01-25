@@ -4,7 +4,8 @@
 \alias{RunIFS}
 \title{RunChaosGame}
 \usage{
-RunIFS(transformation, translation, probability, iterations, x_res, y_res)
+RunIFS(transformation, translation, probability, iterations, width, height,
+  set_palette = 0)
 }
 \arguments{
 \item{transformation}{A list of size n, the 2 x 2 transformation matrices.}
@@ -14,13 +15,16 @@ RunIFS(transformation, translation, probability, iterations, x_res, y_res)
 \item{probability}{A list of size n, the weighted probabilities.}
 
 \item{iterations}{The number of iterations/points.}
+
+\item{width}{The width of the image.}
+
+\item{height}{The height of the image.}
+
+\item{set_palette}{0 = default palette; 1 = grayscale; 2 = rich.colors.}
 }
 \value{
-A matrix of black/white pixels.
+A matrix of pixels.
 }
 \description{
 This function allows you to plot some fractals using the Iterated Function Systems theory.
-}
-\examples{
-pixel_matrix = IFSPlot::RunChaosGame(5, .4, 100**3)
 }

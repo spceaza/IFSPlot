@@ -8,10 +8,8 @@
 #' @param width          The width of the image.
 #' @param height         The height of the image.
 #' @param set_palette    0 = default palette; 1 = grayscale; 2 = rich.colors.
-#' @return A matrix of black/white pixels.
+#' @return A matrix of pixels.
 #' @export
-#' @examples
-#' pixel_matrix = IFSPlot::RunChaosGame(5, .4, 100**3)
 RunIFS = function(transformation, translation, probability, iterations, width, height, set_palette = 0) {
   result = IFS(transformation, translation, probability, iterations, width, height)
   par(mar=c(0, 0, 0, 0))
