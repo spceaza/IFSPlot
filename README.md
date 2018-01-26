@@ -177,9 +177,66 @@ result = IFSPlot::RunIFS(transformations, translations, probability, iterations,
 #
 #> probability
 # [1] 98  2
- 
- ```
+
+```
  
 ### Output
 
 ![output](docs/random2.png)
+
+### Code
+
+```R
+transformations = list()
+translations    = list()
+probability     = c()
+
+n_rules = ceiling(runif(1, 2, 5))
+
+for(i in 1:n_rules) {
+  transformations[[i]] = matrix(data = c(runif(1, -1, 1), runif(1, -1, 1), runif(1, -1, 1), runif(1, -1, 1)), nrow = 2, ncol = 2)
+  translations[[i]]    = c(runif(1, -10, 10), runif(1, -1, 1))
+  if(i < n_rules && sum(probability) < 100)
+    probability = c(probability, ceiling(runif(1, 1, 100 - sum(probability))))
+  else
+    probability = c(probability, 100 - sum(probability))
+}
+
+iterations = 10**7
+
+result = IFSPlot::RunIFS(transformations, translations, probability, iterations, 600*600, 2)
+
+#> transformations
+#[[1]]
+#            [,1]      [,2]
+#[1,]  0.66640006 0.4746569
+#[2,] -0.04795423 0.4930780
+#
+#[[2]]
+#          [,1]       [,2]
+#[1,] 0.5868358 -0.6407019
+#[2,] 0.9718777  0.6517174
+#
+#[[3]]
+#          [,1]       [,2]
+#[1,] 0.3972159 -0.2148658
+#[2,] 0.3573538  0.3081989
+#
+#> translations
+#[[1]]
+#[1] -8.993093 -2.422015
+#
+#[[2]]
+#[1] -8.787602 -4.981803
+#
+#[[3]]
+#[1] 1.562586 9.455961
+#
+#> probability
+#[1] 63 21 16
+
+```
+
+### Output
+
+![output](docs/random_color.png)
