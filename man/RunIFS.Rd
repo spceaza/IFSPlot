@@ -4,7 +4,7 @@
 \alias{RunIFS}
 \title{RunIFS}
 \usage{
-RunIFS(transformation, translation, probability, iterations, width, height,
+RunIFS(transformation, translation, probability, iterations, pixels,
   set_palette = 0)
 }
 \arguments{
@@ -16,11 +16,9 @@ RunIFS(transformation, translation, probability, iterations, width, height,
 
 \item{iterations}{The number of iterations/points.}
 
-\item{width}{The width of the image.}
-
-\item{height}{The height of the image.}
-
 \item{set_palette}{0 = default palette; 1 = grayscale; 2 = rich.colors.}
+
+\item{width}{The number of pixels for the image.}
 }
 \value{
 A matrix of pixels.

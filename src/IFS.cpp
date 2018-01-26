@@ -27,11 +27,10 @@ void test(Ts... args)
 }
 
 // [[Rcpp::export]]
-NumericMatrix IFS(const List& transformation, const List& translation, const std::vector<int>& probability, const int& iterations, int width, int height)
+List IFS(const List& transformation, const List& translation, const std::vector<int>& probability, const int& iterations, const int pixels)
 {
   std::vector<sp::Matrix<double>>  _transformation;
   std::vector<sp::Matrix<double>>  _translation;
-  NumericMatrix                    result(width, height);
   std::vector<int>                 rules_probability;
   sp::Matrix<double>               point(std::vector<double>({0, 0}));
   std::vector<double>              x(iterations);
@@ -41,6 +40,7 @@ NumericMatrix IFS(const List& transformation, const List& translation, const std
   double max_x = -std::numeric_limits<double>::infinity();
   double min_y =  std::numeric_limits<double>::infinity();
   double max_y = -std::numeric_limits<double>::infinity();
+  int w, h;
 
   for (int i = 0; i < transformation.length(); ++i)
     _transformation.push_back( ToMatrix( transformation(i) ) );
@@ -64,15 +64,25 @@ NumericMatrix IFS(const List& transformation, const List& translation, const std
     if(y[i] > max_y) max_y = y[i];
     if(y[i] < min_y) min_y = y[i];
   }
+
+  double p = sqrt((1.0*pixels)/((max_x - min_x)*(max_y - min_y)));
+
+  w = (max_x - min_x) * p;
+  h = (max_y - min_y) * p;
+
+  NumericMatrix result(w, h);
   
   for(int i = 0; i < iterations; ++i)
   {
-    x[i] = (x[i] - min_x) * (width - 1) / (max_x - min_x);
-    y[i] = (y[i] - min_y) * (height - 1) / (max_y - min_y);
+    x[i] = (x[i] - min_x) * (w - 1)  / (max_x - min_x);
+    y[i] = (y[i] - min_y) * (h - 1) / (max_y - min_y);
 
     if(result(x[i], y[i]) < 100)
       result(x[i], y[i]) += 1;
   }
 
-  return result;
+  return List::create(Named("ImageMatrix") = result,
+                      Named("width")       = w,
+                      Named("height")      = h);
+
 }

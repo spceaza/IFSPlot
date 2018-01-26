@@ -6,8 +6,8 @@
 using namespace Rcpp;
 
 // IFS
-NumericMatrix IFS(const List& transformation, const List& translation, const std::vector<int>& probability, const int& iterations, int x_res, int y_res);
-RcppExport SEXP _IFSPlot_IFS(SEXP transformationSEXP, SEXP translationSEXP, SEXP probabilitySEXP, SEXP iterationsSEXP, SEXP x_resSEXP, SEXP y_resSEXP) {
+List IFS(const List& transformation, const List& translation, const std::vector<int>& probability, const int& iterations, const int pixels);
+RcppExport SEXP _IFSPlot_IFS(SEXP transformationSEXP, SEXP translationSEXP, SEXP probabilitySEXP, SEXP iterationsSEXP, SEXP pixelsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -15,15 +15,14 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const List& >::type translation(translationSEXP);
     Rcpp::traits::input_parameter< const std::vector<int>& >::type probability(probabilitySEXP);
     Rcpp::traits::input_parameter< const int& >::type iterations(iterationsSEXP);
-    Rcpp::traits::input_parameter< int >::type x_res(x_resSEXP);
-    Rcpp::traits::input_parameter< int >::type y_res(y_resSEXP);
-    rcpp_result_gen = Rcpp::wrap(IFS(transformation, translation, probability, iterations, x_res, y_res));
+    Rcpp::traits::input_parameter< const int >::type pixels(pixelsSEXP);
+    rcpp_result_gen = Rcpp::wrap(IFS(transformation, translation, probability, iterations, pixels));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_IFSPlot_IFS", (DL_FUNC) &_IFSPlot_IFS, 6},
+    {"_IFSPlot_IFS", (DL_FUNC) &_IFSPlot_IFS, 5},
     {NULL, NULL, 0}
 };
 
