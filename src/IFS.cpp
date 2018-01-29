@@ -31,6 +31,7 @@ List IFS2D(const List& transformation, const List& translation, const std::vecto
   sp::Matrix<double>               point(std::vector<double>({0, 0}));
   std::vector<double>              x(iterations), y(iterations);
   int index;
+  int p_count = 0;
   double min_x, min_y, max_x, max_y;
   max_x = max_y = -std::numeric_limits<double>::infinity();
   min_x = min_y =  std::numeric_limits<double>::infinity();
@@ -43,12 +44,15 @@ List IFS2D(const List& transformation, const List& translation, const std::vecto
     _translation.push_back( sp::Matrix<double>( ToVector( translation(i) ) ) );
 
   for( int i = 0; i < probability.size(); ++i)
+  {
+    p_count += probability[i];
     for( int j = 0; j < probability[i]; ++j)
       rules_probability.push_back(i);
+  }
 
   for (int i = 0; i < iterations; i++)
   {
-    index = rules_probability[rand() % 100];
+    index = rules_probability[rand() % p_count];
     point.Multiplication(_transformation[index], point);
     point += _translation[index];
     x[i] = point[0][0];
@@ -85,6 +89,7 @@ List IFS3D(const List& transformation, const List& translation, const std::vecto
   std::vector<int>                 rules_probability;
   sp::Matrix<double>               point(std::vector<double>({0, 0, 0}));
   std::vector<double>              x(iterations), y(iterations), z(iterations);
+  int p_count = 0;
   int index;
   double min_x, min_y, min_z, max_x, max_y, max_z;
   min_x = min_y = min_z =  std::numeric_limits<double>::infinity();
@@ -98,12 +103,15 @@ List IFS3D(const List& transformation, const List& translation, const std::vecto
     _translation.push_back( sp::Matrix<double>( ToVector( translation(i) ) ) );
 
   for( int i = 0; i < probability.size(); ++i)
+  {
+    p_count += probability[i];
     for( int j = 0; j < probability[i]; ++j)
       rules_probability.push_back(i);
+  }
 
   for (int i = 0; i < iterations; i++)
   {
-    index = rules_probability[rand() % 100];
+    index = rules_probability[rand() % p_count];
     point.Multiplication(_transformation[index], point);
     point += _translation[index];
     x[i] = point[0][0];

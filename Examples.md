@@ -6,39 +6,46 @@
 ```R
 library(IFSPlot)
 
-url = "https://gist.githubusercontent.com/cesandovalp/54549c7262d8deb2f80a1d4fb203fe12/raw/4bd5f6616c3ed088f1432fa97461addc410f7269/Fern2D.json"
-result = RunJSONIFS2D(url, 0)
+url_ifs = "https://gist.githubusercontent.com/cesandovalp/54549c7262d8deb2f80a1d4fb203fe12/raw/4bd5f6616c3ed088f1432fa97461addc410f7269/Fern2D.json"
+result = RunJSONIFS2D(url_ifs, 0)
 
 ```
 ### Output
-
 <img src="docs/fern.png" width="200">
 
 ### Code
-
 ```R
 library(IFSPlot)
 
-url = "https://gist.githubusercontent.com/cesandovalp/54549c7262d8deb2f80a1d4fb203fe12/raw/4bd5f6616c3ed088f1432fa97461addc410f7269/Fern2D.json"
-result = RunJSONIFS2D(url, 1)
+url_ifs = "https://gist.githubusercontent.com/cesandovalp/54549c7262d8deb2f80a1d4fb203fe12/raw/4bd5f6616c3ed088f1432fa97461addc410f7269/Fern2D.json"
+result = RunJSONIFS2D(url_ifs, 1)
 ```
 ### Output
-
 <img src="docs/fern_grayscale.png" width="200">
 
 ## Sierpinski triangle
 ### Code
-
 ```R
 library(IFSPlot)
 
-url = "https://gist.githubusercontent.com/cesandovalp/54549c7262d8deb2f80a1d4fb203fe12/raw/efbbc0609c228b90c05ed21654aadd2a293ac026/Sierpinski2D.json"
-result = RunJSONIFS2D(url, 0)
+url_ifs = "https://gist.githubusercontent.com/cesandovalp/54549c7262d8deb2f80a1d4fb203fe12/raw/efbbc0609c228b90c05ed21654aadd2a293ac026/Sierpinski2D.json"
+result = RunJSONIFS2D(url_ifs, 0)
 
 ```
 ### Output
-
 <img src="docs/sierpinski.png" width="200">
+
+### Code
+```R
+library(IFSPlot)
+
+url_ifs = "https://gist.githubusercontent.com/cesandovalp/54549c7262d8deb2f80a1d4fb203fe12/raw/01040f7cd0e90089f469869d5b5f5d9259ed6cd7/Sierpinski3D.json"
+result = IFSPlot::RunJSONIFS3D(url_ifs, 866, 866, 0)
+
+```
+
+### Output
+[![Sierpinski 3D](https://img.youtube.com/vi/bH61r6B4d2A/0.jpg)](https://www.youtube.com/watch?v=bH61r6B4d2A)
 
 ## Random IFS
 ### Code
