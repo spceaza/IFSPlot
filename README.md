@@ -39,7 +39,7 @@ result = RunIFS(transformations, translations, probability, iterations, 600*1200
 ```
 ### Output
 
-<img src="docs/fern.png" width="100">
+<img src="docs/fern.png" width="200">
 
 ### Code
 
@@ -67,7 +67,7 @@ result = RunIFS(transformations, translations, probability, iterations, 600*1200
 ```
 ### Output
 
-![output](docs/fern_grayscale.png)
+<img src="docs/fern_grayscale.png" width="200">
 
 ## Sierpinski triangle
 ### Code
@@ -95,7 +95,7 @@ result = RunIFS(transformations, translations, probability, iterations, 600*600)
 ```
 ### Output
 
-![output](docs/sierpinski.png)
+<img src="docs/sierpinski.png" width="200">
 
 ## Random IFS
 ### Code
@@ -153,7 +153,7 @@ result = IFSPlot::RunIFS(transformations, translations, probability, iterations,
 
 ### Output
 
-![output](docs/random.png)
+<img src="docs/random.png" width="500">
 
 ### Code
 
@@ -182,7 +182,7 @@ result = IFSPlot::RunIFS(transformations, translations, probability, iterations,
 
 ### Output
 
-![output](docs/random2.png)
+<img src="docs/random2.png" width="500">
 
 ### Code
 
@@ -239,4 +239,4 @@ result = IFSPlot::RunIFS(transformations, translations, probability, iterations,
 
 ### Output
 
-![output](docs/random_color.png)
+<img src="docs/random_color.png" width="400">
