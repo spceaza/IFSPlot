@@ -6,24 +6,9 @@
 ```R
 library(IFSPlot)
 
-m1 = matrix(data = c(+0.00, +0.00, +0.00, +0.16), nrow = 2, ncol = 2)
-m2 = matrix(data = c(+0.85, -0.04, +0.04, +0.85), nrow = 2, ncol = 2)
-m3 = matrix(data = c(+0.20, +0.23, -0.26, +0.22), nrow = 2, ncol = 2)
-m4 = matrix(data = c(-0.15, +0.26, +0.28, +0.24), nrow = 2, ncol = 2)
+url = "https://gist.githubusercontent.com/cesandovalp/54549c7262d8deb2f80a1d4fb203fe12/raw/4bd5f6616c3ed088f1432fa97461addc410f7269/Fern2D.json"
+result = RunJSONIFS2D(url, 0)
 
-v1 = c(0.00, 0.00)
-v2 = c(0.00, 1.60)
-v3 = c(0.00, 1.60)
-v4 = c(0.00, 0.44)
-
-probability = c(1, 85, 7, 7)
-
-transformations = list(m1, m2, m3, m4)
-translations    = list(v1, v2, v3, v4)
-
-iterations = 10**7
-
-result = RunIFS(transformations, translations, probability, iterations, 600*1200)
 ```
 ### Output
 
@@ -34,24 +19,8 @@ result = RunIFS(transformations, translations, probability, iterations, 600*1200
 ```R
 library(IFSPlot)
 
-m1 = matrix(data = c(+0.00, +0.00, +0.00, +0.16), nrow = 2, ncol = 2)
-m2 = matrix(data = c(+0.85, -0.04, +0.04, +0.85), nrow = 2, ncol = 2)
-m3 = matrix(data = c(+0.20, +0.23, -0.26, +0.22), nrow = 2, ncol = 2)
-m4 = matrix(data = c(-0.15, +0.26, +0.28, +0.24), nrow = 2, ncol = 2)
-
-v1 = c(0.00, 0.00)
-v2 = c(0.00, 1.60)
-v3 = c(0.00, 1.60)
-v4 = c(0.00, 0.44)
-
-probability = c(1, 85, 7, 7)
-
-transformations = list(m1, m2, m3, m4)
-translations    = list(v1, v2, v3, v4)
-
-iterations = 10**7
-
-result = RunIFS(transformations, translations, probability, iterations, 600*1200, 1)
+url = "https://gist.githubusercontent.com/cesandovalp/54549c7262d8deb2f80a1d4fb203fe12/raw/4bd5f6616c3ed088f1432fa97461addc410f7269/Fern2D.json"
+result = RunJSONIFS2D(url, 1)
 ```
 ### Output
 
@@ -63,22 +32,8 @@ result = RunIFS(transformations, translations, probability, iterations, 600*1200
 ```R
 library(IFSPlot)
 
-m1 = matrix(data = c(0.5, 0, 0, 0.5), nrow = 2, ncol = 2)
-m2 = matrix(data = c(0.5, 0, 0, 0.5), nrow = 2, ncol = 2)
-m3 = matrix(data = c(0.5, 0, 0, 0.5), nrow = 2, ncol = 2)
-
-v1 = c(0.00, 0)
-v2 = c(0.50, 0)
-v3 = c(0.25, sqrt(3)/4)
-
-probability = c(33, 33, 34)
-
-transformations = list(m1, m2, m3)
-translations    = list(v1, v2, v3)
-
-iterations = 10**7
-
-result = RunIFS(transformations, translations, probability, iterations, 600*600)
+url = "https://gist.githubusercontent.com/cesandovalp/54549c7262d8deb2f80a1d4fb203fe12/raw/efbbc0609c228b90c05ed21654aadd2a293ac026/Sierpinski2D.json"
+result = RunJSONIFS2D(url, 0)
 
 ```
 ### Output
@@ -89,6 +44,8 @@ result = RunIFS(transformations, translations, probability, iterations, 600*600)
 ### Code
 
 ```R
+library(IFSPlot)
+
 transformations = list()
 translations    = list()
 probability     = c()
@@ -106,7 +63,7 @@ for(i in 1:n_rules) {
 
 iterations = 10**7
 
-result = IFSPlot::RunIFS(transformations, translations, probability, iterations, 600*600)
+result = RunJSONIFS2D(transformations, translations, probability, iterations, 600*600)
 
 #> transformations
 #[[1]]
@@ -175,6 +132,8 @@ result = IFSPlot::RunIFS(transformations, translations, probability, iterations,
 ### Code
 
 ```R
+library(IFSPlot)
+
 transformations = list()
 translations    = list()
 probability     = c()
@@ -192,7 +151,7 @@ for(i in 1:n_rules) {
 
 iterations = 10**7
 
-result = IFSPlot::RunIFS(transformations, translations, probability, iterations, 600*600, 2)
+result = RunJSONIFS2D(transformations, translations, probability, iterations, 600*600, 2)
 
 #> transformations
 #[[1]]

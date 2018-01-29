@@ -25,7 +25,7 @@ RunIFS3D(transformation, translation, probability, iterations, pixels, width,
 \item{set_palette}{0 = default palette; 1 = grayscale; 2 = rich.colors.}
 }
 \value{
-A 3D array of pixels.
+A list with a 3D array of pixels and the parameters as a JSON.
 }
 \description{
 This function allows you to plot some fractals using the Iterated Function Systems theory.

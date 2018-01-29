@@ -26,17 +26,14 @@ std::vector<double> ToVector(const NumericVector& v)
 // [[Rcpp::export]]
 List IFS2D(const List& transformation, const List& translation, const std::vector<int>& probability, const int& iterations, const int pixels)
 {
-  std::vector<sp::Matrix<double>>  _transformation;
-  std::vector<sp::Matrix<double>>  _translation;
+  std::vector<sp::Matrix<double>>  _transformation, _translation;
   std::vector<int>                 rules_probability;
   sp::Matrix<double>               point(std::vector<double>({0, 0}));
-  std::vector<double>              x(iterations);
-  std::vector<double>              y(iterations);
+  std::vector<double>              x(iterations), y(iterations);
   int index;
-  double min_x =  std::numeric_limits<double>::infinity();
-  double max_x = -std::numeric_limits<double>::infinity();
-  double min_y =  std::numeric_limits<double>::infinity();
-  double max_y = -std::numeric_limits<double>::infinity();
+  double min_x, min_y, max_x, max_y;
+  max_x = max_y = -std::numeric_limits<double>::infinity();
+  min_x = min_y =  std::numeric_limits<double>::infinity();
   int w, h;
 
   for (int i = 0; i < transformation.length(); ++i)
@@ -78,29 +75,20 @@ List IFS2D(const List& transformation, const List& translation, const std::vecto
       result(x[i], y[i]) += 1;
   }
 
-  return List::create(Named("ImageMatrix") = result,
-                      Named("width")       = w,
-                      Named("height")      = h);
-
+  return List::create(Named("ImageMatrix") = result);
 }
 
 // [[Rcpp::export]]
 List IFS3D(const List& transformation, const List& translation, const std::vector<int>& probability, const int& iterations, const int pixels)
 {
-  std::vector<sp::Matrix<double>>  _transformation;
-  std::vector<sp::Matrix<double>>  _translation;
+  std::vector<sp::Matrix<double>>  _transformation, _translation;
   std::vector<int>                 rules_probability;
   sp::Matrix<double>               point(std::vector<double>({0, 0, 0}));
-  std::vector<double>              x(iterations);
-  std::vector<double>              y(iterations);
-  std::vector<double>              z(iterations);
+  std::vector<double>              x(iterations), y(iterations), z(iterations);
   int index;
-  double min_x =  std::numeric_limits<double>::infinity();
-  double max_x = -std::numeric_limits<double>::infinity();
-  double min_y =  std::numeric_limits<double>::infinity();
-  double max_y = -std::numeric_limits<double>::infinity();
-  double min_z =  std::numeric_limits<double>::infinity();
-  double max_z = -std::numeric_limits<double>::infinity();
+  double min_x, min_y, min_z, max_x, max_y, max_z;
+  min_x = min_y = min_z =  std::numeric_limits<double>::infinity();
+  max_x = max_y = max_z = -std::numeric_limits<double>::infinity();
   int w, h, l;
 
   for (int i = 0; i < transformation.length(); ++i)
@@ -153,5 +141,4 @@ List IFS3D(const List& transformation, const List& translation, const std::vecto
   }
 
   return List::create(Named("ImageMatrix") = result);
-
 }

@@ -8,10 +8,12 @@
 #' @param pixels         The number of pixels for the 2D plot.
 #' @param set_palette    0 = default palette; 1 = grayscale; 2 = rich.colors.
 #' @param filename       If given, saves the image as a png file in the current working directory.
-#' @return A 2D array of pixels.
+#' @return A list with a 2D array of pixels and the parameters as a JSON.
 #' @export
 RunIFS2D = function(transformation, translation, probability, iterations, pixels, set_palette = 0, filename = "") {
   result = IFS2D(transformation, translation, probability, iterations, pixels)
+  width  = dim(result$ImageMatrix)[1]
+  height = dim(result$ImageMatrix)[2]
   par(mar=c(0, 0, 0, 0))
   if(set_palette == 0) palette("default")
   if(set_palette == 1) palette(gray(length(table(result$ImageMatrix)):0 / length(table(result$ImageMatrix))))
@@ -19,17 +21,47 @@ RunIFS2D = function(transformation, translation, probability, iterations, pixels
   if(set_palette == 0) {
     result$ImageMatrix[result$ImageMatrix > 1] = 1
     if(filename != "") {
-      png(filename = filename, width = result$width, height = result$height)
+      png(filename = filename, width = width, height = height)
       image(result$ImageMatrix, useRaster=TRUE, axes=FALSE, col = 0:1)
       dev.off()
-    }
+    } else image(result$ImageMatrix, useRaster=TRUE, axes=FALSE, col = 0:1)
   }
   else
     if(filename != "") {
-      png(filename = filename, width = result$width, height = result$height)
+      png(filename = filename, width = width, height = height)
       image(result$ImageMatrix, useRaster=TRUE, axes=FALSE, col = 0:length(table(result$ImageMatrix)))
       dev.off()
-    }
+    } else image(result$ImageMatrix, useRaster=TRUE, axes=FALSE, col = 0:length(table(result$ImageMatrix)))
+
+  parameters = list()
+  parameters$transformation = transformation
+  parameters$translation    = translation
+  parameters$probability    = probability
+  parameters$iterations     = iterations
+  parameters$pixels         = pixels
+
+  result$JSON = toJSON(parameters)
+
+  result
+}
+
+#' RunJSONIFS2D
+#'
+#' This function allows you to plot some fractals using the Iterated Function Systems theory.
+#' @param JSON           A JSON string, URL or file.
+#' @param set_palette    0 = default palette; 1 = grayscale; 2 = rich.colors.
+#' @param filename       If given, saves the image as a png file in the current working directory.
+#' @return A list with a 2D array of pixels and the parameters as a JSON.
+#' @export
+RunJSONIFS2D = function(JSON, set_palette = 0, filename = "") {
+  parameters = jsonlite::fromJSON(JSON, simplifyVector = F)
+  transformations = lapply(parameters$transformation, function(x) matrix(data = unlist(x), nrow = length(x), ncol = length(x), byrow = T) )
+  translations    = lapply(parameters$translation, function(x) { unlist(x) })
+  probability     = unlist(parameters$probability)
+  iterations      = unlist(parameters$iterations)
+  pixels          = unlist(parameters$pixels)
+
+  result = RunIFS2D(transformations, translations, probability, iterations, pixels, set_palette, filename)
 
   result
 }
@@ -45,7 +77,7 @@ RunIFS2D = function(transformation, translation, probability, iterations, pixels
 #' @param width          Width of the window.
 #' @param height         Height of the window.
 #' @param set_palette    0 = default palette; 1 = grayscale; 2 = rich.colors.
-#' @return A 3D array of pixels.
+#' @return A list with a 3D array of pixels and the parameters as a JSON.
 #' @export
 RunIFS3D = function(transformation, translation, probability, iterations, pixels, width, height, set_palette = 0) {
   result = IFS3D(transformation, translation, probability, iterations, pixels)
@@ -68,6 +100,41 @@ RunIFS3D = function(transformation, translation, probability, iterations, pixels
   }
 
   par3d(windowRect = c(0, 0, width, height))
+
+  parameters = list()
+  parameters$transformation = transformation
+  parameters$translation    = translation
+  parameters$probability    = probability
+  parameters$iterations     = iterations
+  parameters$pixels         = pixels
+  parameters$width          = width
+  parameters$height         = height
+
+  result$JSON = toJSON(parameters)
+
+  result
+}
+
+#' RunJSONIFS3D
+#'
+#' This function allows you to plot some fractals using the Iterated Function Systems theory.
+#' @param JSON           A JSON string, URL or file.
+#' @param width          Width of the window.
+#' @param height         Height of the window.
+#' @param set_palette    0 = default palette; 1 = grayscale; 2 = rich.colors.
+#' @return A list with a 3D array of pixels and the parameters as a JSON.
+#' @export
+RunJSONIFS3D = function(JSON, width, height, set_palette = 0) {
+  parameters = jsonlite::fromJSON(JSON, simplifyVector = F)
+  transformations = lapply(parameters$transformation, function(x) matrix(data = unlist(x), nrow = length(x), ncol = length(x), byrow = T) )
+  translations    = lapply(parameters$translation, function(x) { unlist(x) })
+  probability     = unlist(parameters$probability)
+  iterations      = unlist(parameters$iterations)
+  pixels          = unlist(parameters$pixels)
+  width           = unlist(parameters$width)
+  height          = unlist(parameters$height)
+
+  result = RunIFS3D(transformations, translations, probability, iterations, pixels, width, height, set_palette)
 
   result
 }

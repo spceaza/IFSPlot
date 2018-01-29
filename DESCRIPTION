@@ -7,6 +7,6 @@ Author: Cristian Sandoval-Pineda
 Maintainer: Cristian Sandoval-Pineda <sandovalp.ce@gmail.com>
 Description: Draw fractals using the chaos game method and C++.
 License: GPL (>= 2)
-Imports: Rcpp (>= 0.12.15), reshape2, gplots, rgl
+Imports: Rcpp (>= 0.12.15), reshape2, gplots, rgl, jsonlite
 LinkingTo: Rcpp, RcppArmadillo
 RoxygenNote: 6.0.1.9000

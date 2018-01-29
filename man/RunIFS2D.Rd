@@ -23,7 +23,7 @@ RunIFS2D(transformation, translation, probability, iterations, pixels,
 \item{filename}{If given, saves the image as a png file in the current working directory.}
 }
 \value{
-A 2D array of pixels.
+A list with a 2D array of pixels and the parameters as a JSON.
 }
 \description{
 This function allows you to plot some fractals using the Iterated Function Systems theory.
