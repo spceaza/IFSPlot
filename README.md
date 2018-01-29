@@ -39,7 +39,7 @@ result = RunIFS(transformations, translations, probability, iterations, 600*1200
 ```
 ### Output
 
-![output](docs/fern.png)
+<img src="docs/fern.png" width="100">
 
 ### Code
 
@@ -179,7 +179,7 @@ result = IFSPlot::RunIFS(transformations, translations, probability, iterations,
 # [1] 98  2
 
 ```
- 
+
 ### Output
 
 ![output](docs/random2.png)
