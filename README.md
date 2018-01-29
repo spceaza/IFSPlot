@@ -41,3 +41,7 @@ result = RunIFS(transformations, translations, probability, iterations, 600*1200
 ### Output
 
 <img src="docs/fern_grayscale.png" width="200">
+
+## More Examples
+
+[More examples](Examples.md)
