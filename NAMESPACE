@@ -1,4 +1,7 @@
 useDynLib(IFSPlot, .registration=TRUE)
-export(RunIFS)
+export(RunIFS2D, RunIFS3D)
 importFrom(Rcpp, evalCpp)
 importFrom(gplots, rich.colors)
+importFrom(reshape2, melt)
+importFrom(rgl, plot3d)
+importFrom(rgl, par3d)
