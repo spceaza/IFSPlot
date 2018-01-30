@@ -44,7 +44,7 @@ result = IFSPlot::RunJSONIFS3D(url_ifs, 866, 866, 0)
 
 ```
 
-### Output
+### Output (link to youtube video)
 [![Sierpinski 3D](https://img.youtube.com/vi/bH61r6B4d2A/0.jpg)](https://www.youtube.com/watch?v=bH61r6B4d2A)
 
 ## Random IFS

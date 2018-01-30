@@ -55,8 +55,8 @@ List IFS2D(const List& transformation, const List& translation, const std::vecto
     index = rules_probability[rand() % p_count];
     point.Multiplication(_transformation[index], point);
     point += _translation[index];
-    x[i] = point[0][0];
-    y[i] = point[1][0];
+    x[i] = abs(point[0][0]) > 10000 ? 0 : point[0][0];
+    y[i] = abs(point[1][0]) > 10000 ? 0 : point[1][0];
     if(x[i] > max_x) max_x = x[i];
     if(x[i] < min_x) min_x = x[i];
     if(y[i] > max_y) max_y = y[i];
@@ -114,9 +114,9 @@ List IFS3D(const List& transformation, const List& translation, const std::vecto
     index = rules_probability[rand() % p_count];
     point.Multiplication(_transformation[index], point);
     point += _translation[index];
-    x[i] = point[0][0];
-    y[i] = point[1][0];
-    z[i] = point[2][0];
+    x[i] = abs(point[0][0]) > 10000 ? 0 : point[0][0];
+    y[i] = abs(point[1][0]) > 10000 ? 0 : point[1][0];
+    z[i] = abs(point[2][0]) > 10000 ? 0 : point[2][0];
     if(x[i] > max_x) max_x = x[i];
     if(x[i] < min_x) min_x = x[i];
     if(y[i] > max_y) max_y = y[i];
