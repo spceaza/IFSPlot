@@ -57,13 +57,14 @@ List IFS2D(const List& transformation, const List& translation, const std::vecto
     point += _translation[index];
     x[i] = abs(point[0][0]) > 10000 ? 0 : point[0][0];
     y[i] = abs(point[1][0]) > 10000 ? 0 : point[1][0];
+
     if(x[i] > max_x) max_x = x[i];
     if(x[i] < min_x) min_x = x[i];
     if(y[i] > max_y) max_y = y[i];
     if(y[i] < min_y) min_y = y[i];
   }
 
-  double p = sqrt((1.0*pixels)/((max_x - min_x)*(max_y - min_y)));
+  double p = sqrt(pixels/((max_x - min_x)*(max_y - min_y)));
 
   w = (max_x - min_x) * p;
   h = (max_y - min_y) * p;
@@ -117,6 +118,7 @@ List IFS3D(const List& transformation, const List& translation, const std::vecto
     x[i] = abs(point[0][0]) > 10000 ? 0 : point[0][0];
     y[i] = abs(point[1][0]) > 10000 ? 0 : point[1][0];
     z[i] = abs(point[2][0]) > 10000 ? 0 : point[2][0];
+
     if(x[i] > max_x) max_x = x[i];
     if(x[i] < min_x) min_x = x[i];
     if(y[i] > max_y) max_y = y[i];
@@ -125,24 +127,26 @@ List IFS3D(const List& transformation, const List& translation, const std::vecto
     if(z[i] < min_z) min_z = z[i];
   }
 
-  double p = (max_x - min_x);
-  p *= (max_y - min_y);
-  p *= (max_z - min_z);
-  p = pixels / p;
-  p = cbrt( p );
+  double p  = (max_x - min_x);
+         p *= (max_y - min_y);
+         p *= (max_z - min_z);
+         p  = pixels / p;
+         p  = cbrt( p );
 
   w = (max_x - min_x) * p;
   h = (max_y - min_y) * p;
   l = (max_z - min_z) * p;
 
-  arma::cube result((int)w, (int)h, (int)l);
-  result.zeros();
+  arma::cube result = arma::zeros<arma::cube>(w, h, l);
 
   for(int i = 0; i < iterations; ++i)
   {
     x[i] = (x[i] - min_x) * (w - 1) / (max_x - min_x);
     y[i] = (y[i] - min_y) * (h - 1) / (max_y - min_y);
     z[i] = (z[i] - min_z) * (l - 1) / (max_z - min_z);
+
+    if((int) x[i] >= w || (int) y[i] >= h || (int) z[i] >= l || (int) x[i] < 0 || (int) y[i] < 0 || (int) z[i] < 0)
+      continue;
 
     if(result(x[i], y[i], z[i]) < 100)
       result(x[i], y[i], z[i]) += 1;

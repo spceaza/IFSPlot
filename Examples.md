@@ -194,3 +194,8 @@ result = RunJSONIFS2D(transformations, translations, probability, iterations, 60
 ### Output
 
 <img src="docs/random_color.png" width="400">
+
+## 200 Random 3D IFS
+
+### Output (link to youtube video)
+[![Random 3D](https://img.youtube.com/vi/44zyGDYo2VM/0.jpg)](https://www.youtube.com/watch?v=44zyGDYo2VM)
