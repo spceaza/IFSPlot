@@ -70,7 +70,7 @@ for(i in 1:n_rules) {
 
 iterations = 10**7
 
-result = RunJSONIFS2D(transformations, translations, probability, iterations, 600*600)
+result = RunIFS2D(transformations, translations, probability, iterations, 600*600)
 
 #> transformations
 #[[1]]
@@ -158,7 +158,7 @@ for(i in 1:n_rules) {
 
 iterations = 10**7
 
-result = RunJSONIFS2D(transformations, translations, probability, iterations, 600*600, 2)
+result = RunIFS2D(transformations, translations, probability, iterations, 600*600, 2)
 
 #> transformations
 #[[1]]
