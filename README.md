@@ -36,7 +36,7 @@ translations    = list(v1, v2, v3, v4)
 
 iterations = 10**7
 
-result = RunIFS(transformations, translations, probability, iterations, 600*1200, 1)
+result = RunIFS2D(transformations, translations, probability, iterations, 600*1200, 1)
 ```
 ### Output
 
