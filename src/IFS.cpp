@@ -52,7 +52,7 @@ List IFS2D(const List& transformation, const List& translation, const std::vecto
 
   for (int i = 0; i < iterations; i++)
   {
-    index = rules_probability[rand() % p_count];
+    index = rules_probability[ R::runif( 0, p_count ) ];
     point.Multiplication(_transformation[index], point);
     point += _translation[index];
     x[i] = abs(point[0][0]) > 10000 ? 0 : point[0][0];
@@ -112,7 +112,7 @@ List IFS3D(const List& transformation, const List& translation, const std::vecto
 
   for (int i = 0; i < iterations; i++)
   {
-    index = rules_probability[rand() % p_count];
+    index = rules_probability[ R::runif( 0, p_count ) ];
     point.Multiplication(_transformation[index], point);
     point += _translation[index];
     x[i] = abs(point[0][0]) > 10000 ? 0 : point[0][0];

@@ -9,6 +9,27 @@
 #' @param set_palette    0 = default palette; 1 = grayscale; 2 = rich.colors.
 #' @param filename       If given, saves the image as a png file in the current working directory.
 #' @return A list with a 2D array of pixels and the parameters as a JSON.
+#' @examples
+#' library(IFSPlot)
+#'
+#' m1 = matrix(data = c(+0.00, +0.00, +0.00, +0.16), nrow = 2, ncol = 2)
+#' m2 = matrix(data = c(+0.85, -0.04, +0.04, +0.85), nrow = 2, ncol = 2)
+#' m3 = matrix(data = c(+0.20, +0.23, -0.26, +0.22), nrow = 2, ncol = 2)
+#' m4 = matrix(data = c(-0.15, +0.26, +0.28, +0.24), nrow = 2, ncol = 2)
+#'
+#' v1 = c(0.00, 0.00)
+#' v2 = c(0.00, 1.60)
+#' v3 = c(0.00, 1.60)
+#' v4 = c(0.00, 0.44)
+#'
+#' probability = c(1, 85, 7, 7)
+#'
+#' transformations = list(m1, m2, m3, m4)
+#' translations    = list(v1, v2, v3, v4)
+#'
+#' iterations = 10**7
+#'
+#' result = RunIFS2D(transformations, translations, probability, iterations, 600*1200)
 #' @export
 RunIFS2D = function(transformation, translation, probability, iterations, pixels, set_palette = 0, filename = "") {
   result = IFS2D(transformation, translation, probability, iterations, pixels)
@@ -52,6 +73,11 @@ RunIFS2D = function(transformation, translation, probability, iterations, pixels
 #' @param set_palette    0 = default palette; 1 = grayscale; 2 = rich.colors.
 #' @param filename       If given, saves the image as a png file in the current working directory.
 #' @return A list with a 2D array of pixels and the parameters as a JSON.
+#' @examples
+#' library(IFSPlot)
+#'
+#' url_ifs = "https://git.io/vpSqc"
+#' #result = RunJSONIFS2D(url_ifs, 1)
 #' @export
 RunJSONIFS2D = function(JSON, set_palette = 0, filename = "") {
   parameters = jsonlite::fromJSON(JSON, simplifyVector = F)
@@ -123,6 +149,11 @@ RunIFS3D = function(transformation, translation, probability, iterations, pixels
 #' @param height         Height of the window.
 #' @param set_palette    0 = default palette; 1 = grayscale; 2 = rich.colors.
 #' @return A list with a 3D array of pixels and the parameters as a JSON.
+#' @examples
+#' library(IFSPlot)
+#'
+#' url_ifs = "https://git.io/vpSq4"
+#' #result = IFSPlot::RunJSONIFS3D(url_ifs, 866, 866, 0)
 #' @export
 RunJSONIFS3D = function(JSON, width, height, set_palette = 0) {
   parameters = jsonlite::fromJSON(JSON, simplifyVector = F)

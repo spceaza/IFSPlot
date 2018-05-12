@@ -21,3 +21,9 @@ A list with a 3D array of pixels and the parameters as a JSON.
 \description{
 This function allows you to plot some fractals using the Iterated Function Systems theory.
 }
+\examples{
+library(IFSPlot)
+
+url_ifs = "https://git.io/vpSq4"
+#result = IFSPlot::RunJSONIFS3D(url_ifs, 866, 866, 0)
+}

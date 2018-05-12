@@ -1,12 +1,12 @@
 Package: IFSPlot
 Type: Package
-Title: Draw fractals using the chaos game method and C++.
+Title: Draw Fractals using Iterated Function Systems and C++
 Version: 1.0
-Date: 2018-01-21
+Date: 2018-05-12
 Author: Cristian Sandoval-Pineda
 Maintainer: Cristian Sandoval-Pineda <sandovalp.ce@gmail.com>
-Description: Draw fractals using the chaos game method and C++.
+Description: With this package you can draw Fractals, using Iterated Function Systems and C++. You can save as images or the parameters as JSON
 License: GPL (>= 2)
 Imports: Rcpp (>= 0.12.15), reshape2, gplots, rgl, jsonlite
 LinkingTo: Rcpp, RcppArmadillo
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 6.0.1
