@@ -45,3 +45,13 @@ result = RunIFS2D(transformations, translations, probability, iterations, 600*12
 ## More Examples
 
 [More examples](Examples.md)
+
+## Status
+
+## Author
+
+Cristian Sandoval-Pineda
+
+## License
+
+GPL (>= 2)
