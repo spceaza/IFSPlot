@@ -1,4 +1,4 @@
-# IFSPlot
+# IFSPlot [![Build Status](https://travis-ci.org/cesandovalp/IFSPlot.svg)](https://travis-ci.org/cesandovalp/IFSPlot) [![License](https://cesandovalp.github.io/assets/images/GPL2+.svg)](http://www.gnu.org/licenses/gpl-2.0.html) [![CRAN](http://www.r-pkg.org/badges/version/IFSPlot)](https://cran.r-project.org/package=IFSPlot) [![Downloads](http://cranlogs.r-pkg.org/badges/IFSPlot?color=brightgreen)](http://www.r-pkg.org/pkg/IFSPlot)
 
 Plot fractals using the Iterated Function Systems in C++.
 Fractals such as clouds or plants can be generated using the iteration of one or more affine transformations.

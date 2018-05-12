@@ -9,4 +9,6 @@ Description: With this package you can draw Fractals, using Iterated Function Sy
 License: GPL (>= 2)
 Imports: Rcpp (>= 0.12.15), reshape2, gplots, rgl, jsonlite
 LinkingTo: Rcpp, RcppArmadillo
+URL: https://github.com/cesandovalp/IFSPlot
+BugReports: https://github.com/cesandovalp/IFSPlot/issues
 RoxygenNote: 6.0.1
