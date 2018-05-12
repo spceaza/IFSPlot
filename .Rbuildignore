@@ -1,4 +1,5 @@
 ^Examples\.md$
+^README\.md$
 ^Docs$
 ^\.git$
 ^\.travis\.yml$

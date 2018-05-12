@@ -5,7 +5,7 @@
 #include <math.h>
 #include <limits>
 #include <RcppArmadillo.h>
-#include "Matrix.hpp"
+#include <Matrix.hpp>
 
 using namespace Rcpp;
 
