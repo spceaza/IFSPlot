@@ -24,6 +24,6 @@ This function allows you to plot some fractals using the Iterated Function Syste
 \examples{
 library(IFSPlot)
 
-url_ifs = "https://git.io/vpSq4"
-#result = IFSPlot::RunJSONIFS3D(url_ifs, 866, 866, 0)
+file_ifs = system.file("extdata", "Sierpinski3D.json", package="IFSPlot")
+result = IFSPlot::RunJSONIFS3D(file_ifs, 866, 866, 0)
 }

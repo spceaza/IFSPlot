@@ -22,6 +22,6 @@ This function allows you to plot some fractals using the Iterated Function Syste
 \examples{
 library(IFSPlot)
 
-url_ifs = "https://git.io/vpSqc"
-#result = RunJSONIFS2D(url_ifs, 1)
+file_ifs = system.file("extdata", "Fern2D.json", package="IFSPlot")
+result = RunJSONIFS2D(file_ifs, 1)
 }
