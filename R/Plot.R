@@ -29,7 +29,7 @@
 #'
 #' iterations = 10**4
 #'
-#' result = RunIFS2D(transformations, translations, probability, iterations, 600*1200)
+#' result = RunIFS2D(transformations, translations, probability, iterations, 600*1200, "out")
 #' @export
 RunIFS2D = function(transformation, translation, probability, iterations, pixels, set_palette = 0, filename = "") {
   result = IFS2D(transformation, translation, probability, iterations, pixels)
@@ -76,8 +76,8 @@ RunIFS2D = function(transformation, translation, probability, iterations, pixels
 #' @examples
 #' library(IFSPlot)
 #'
-#' url_ifs = "https://git.io/vpSqc"
-#' #result = RunJSONIFS2D(url_ifs, 1)
+#' file_ifs = system.file("extdata", "Fern2D.json", package="IFSPlot")
+#' result = RunJSONIFS2D(file_ifs, 1)
 #' @export
 RunJSONIFS2D = function(JSON, set_palette = 0, filename = "") {
   parameters = jsonlite::fromJSON(JSON, simplifyVector = F)
@@ -149,11 +149,6 @@ RunIFS3D = function(transformation, translation, probability, iterations, pixels
 #' @param height         Height of the window.
 #' @param set_palette    0 = default palette; 1 = grayscale; 2 = rich.colors.
 #' @return A list with a 3D array of pixels and the parameters as a JSON.
-#' @examples
-#' library(IFSPlot)
-#'
-#' url_ifs = "https://git.io/vpSq4"
-#' #result = IFSPlot::RunJSONIFS3D(url_ifs, 866, 866, 0)
 #' @export
 RunJSONIFS3D = function(JSON, width, height, set_palette = 0) {
   parameters = jsonlite::fromJSON(JSON, simplifyVector = F)

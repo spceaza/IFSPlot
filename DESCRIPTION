@@ -1,6 +1,6 @@
 Package: IFSPlot
 Type: Package
-Title: Draw fractals using iterated function systems and C++
+Title: Draw Fractals using Iterated Function Systems and C++
 Version: 1.0
 Date: 2018-05-12
 Author: Cristian Sandoval-Pineda

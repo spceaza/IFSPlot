@@ -71,12 +71,16 @@ List IFS2D(const List& transformation, const List& translation, const std::vecto
     point[tid] += _translation[index];
     x[tid][i] = abs(point[tid][0][0]) > 10000 ? 0 : point[tid][0][0];
     y[tid][i] = abs(point[tid][1][0]) > 10000 ? 0 : point[tid][1][0];
-
-    if(x[tid][i] > max_x) max_x = x[tid][i];
-    if(x[tid][i] < min_x) min_x = x[tid][i];
-    if(y[tid][i] > max_y) max_y = y[tid][i];
-    if(y[tid][i] < min_y) min_y = y[tid][i];
   }
+
+  for(int tid = 0; tid < 8; ++tid)
+    for (int i = 0; i < iterations / 8; i++)
+    {
+      if(x[tid][i] > max_x) max_x = x[tid][i];
+      if(x[tid][i] < min_x) min_x = x[tid][i];
+      if(y[tid][i] > max_y) max_y = y[tid][i];
+      if(y[tid][i] < min_y) min_y = y[tid][i];
+    }
 
   double p = sqrt(pixels/((max_x - min_x)*(max_y - min_y)));
 

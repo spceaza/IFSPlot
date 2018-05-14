@@ -46,7 +46,7 @@ probability = c(1, 85, 7, 7)
 transformations = list(m1, m2, m3, m4)
 translations    = list(v1, v2, v3, v4)
 
-iterations = 10**7
+iterations = 10**4
 
 result = RunIFS2D(transformations, translations, probability, iterations, 600*1200)
 }
