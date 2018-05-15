@@ -87,6 +87,9 @@ List IFS2D(const List& transformation, const List& translation, const std::vecto
   w = (max_x - min_x) * p;
   h = (max_y - min_y) * p;
 
+  if( w <= 0 || h <= 0)
+    return List::create(Named("ImageMatrix") = NumericMatrix(1, 1));
+
   NumericMatrix result(w, h);
 
   for(int tid = 0; tid < 8; ++tid)
