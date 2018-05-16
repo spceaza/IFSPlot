@@ -58,9 +58,16 @@ RunIFS2D = function(transformation, translation, probability, iterations, pixels
   else
     if(filename != "")
     {
+      current_dir = getwd()
+      setwd(tempdir())
       png(filename = filename, width = width, height = height)
       image(result$ImageMatrix, useRaster=TRUE, axes=FALSE, col = 0:length(table(result$ImageMatrix)))
       dev.off()
+      image = image_read(filename)
+      alpha = image_transparent(image, "white", fuzz = 0)
+      setwd(current_dir)
+      image_write(alpha, path = filename, format = "png")
+      result$Image = alpha
     }
     else image(result$ImageMatrix, useRaster=TRUE, axes=FALSE, col = 0:length(table(result$ImageMatrix)))
 
