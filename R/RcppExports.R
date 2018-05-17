@@ -2,10 +2,10 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 IFS2D <- function(transformation, translation, probability, iterations, pixels) {
-    .Call(`_IFSPlot_IFS2D`, transformation, translation, probability, iterations, pixels)
+    .Call('_IFSPlot_IFS2D', PACKAGE = 'IFSPlot', transformation, translation, probability, iterations, pixels)
 }
 
 IFS3D <- function(transformation, translation, probability, iterations, pixels) {
-    .Call(`_IFSPlot_IFS3D`, transformation, translation, probability, iterations, pixels)
+    .Call('_IFSPlot_IFS3D', PACKAGE = 'IFSPlot', transformation, translation, probability, iterations, pixels)
 }
 

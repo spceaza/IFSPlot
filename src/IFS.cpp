@@ -97,11 +97,11 @@ List IFS2D( const List& transformation, const List& translation, const std::vect
   w = (_max_x - _min_x) * p;
   h = (_max_y - _min_y) * p;
   
-  for(int i = 0; i < 8; ++i)
-    result.push_back( NumericMatrix( w, h ) );
-
   if( w <= 0 || h <= 0 )
     return List::create( Named( "ImageMatrix" ) = NumericMatrix( 1, 1 ) );
+
+  for(int i = 0; i < 8; ++i)
+    result.push_back( NumericMatrix( w, h ) );
 
   #pragma omp parallel for num_threads(8)
   for( int i = 0; i < iterations / 8; ++i )

@@ -27,9 +27,9 @@
 #' transformations = list(m1, m2, m3, m4)
 #' translations    = list(v1, v2, v3, v4)
 #'
-#' iterations = 10**4
+#' iterations = 1000
 #'
-#' result = RunIFS2D(transformations, translations, probability, iterations, 600*1200, "out")
+#' result = RunIFS2D(transformations, translations, probability, iterations, 100*100, "out")
 #' @export
 RunIFS2D = function(transformation, translation, probability, iterations, pixels, set_palette = 0, filename = "")
 {
