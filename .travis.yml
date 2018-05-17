@@ -1,6 +1,9 @@
 language: r
-
+cache: packages
 sudo: required
+
+env:
+  - RGL_USE_NULL=TRUE
 
 addons:
   apt:
