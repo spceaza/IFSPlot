@@ -5,7 +5,15 @@ Fractals such as clouds or plants can be generated using the iteration of one or
 
 # Installation
 
-```R
+Install the stable version from CRAN:
+
+```r
+install.packages("IFSPlot")
+```
+
+Install the development version from GitHub:
+
+```r
 # install.packages("devtools")
 devtools::install_github("cesandovalp/IFSPlot")
 ```
